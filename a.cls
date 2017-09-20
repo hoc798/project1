@@ -47,4 +47,30 @@ For i = 1 To nrow
     Next j
     ActiveCell.Offset(-ncol, 1).Select
 Next i
+
+Dim g(nrow, ncol) As Integer, h(ncol, nrow) As Integer
+    For i = 1 To nrow
+        For j = 1 To ncol
+        g(i, j) = c(i, j) - e(i, j)
+        h(j, i) = d(j, i) + f(j, i)
+        Next j
+    Next i
+
+Sheets("Sheet1").Select: Range("I2").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = g(i, j)
+        ActiveCell.Offset(0, 1).Select
+    Next j
+    ActiveCell.Offset(1, -ncol).Select
+Next i
+
+Sheets("Sheet1").Select: Range("I6").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = h(j, i)
+        ActiveCell.Offset(1, 0).Select
+    Next j
+    ActiveCell.Offset(-ncol, 1).Select
+Next i
  End Sub
