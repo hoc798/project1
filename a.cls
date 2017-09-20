@@ -1,0 +1,50 @@
+Sub main()
+
+Const nrow As Integer = 2, ncol As Integer = 3
+Dim c(nrow, ncol) As Integer, d(ncol, nrow) As Integer, e(nrow, ncol) As Integer, f(ncol, nrow) As Integer
+Dim i As Integer
+Dim j As Integer
+    For i = 1 To nrow
+        For j = 1 To ncol
+        c(i, j) = 6 * Rnd() + 1
+        d(j, i) = 6 * Rnd() + 1
+        e(i, j) = 6 * Rnd() + 1
+        f(j, i) = 6 * Rnd() + 1
+    Next j
+Next i
+Sheets("Sheet1").Select: Range("A2").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = c(i, j)
+        ActiveCell.Offset(0, 1).Select
+    Next j
+    ActiveCell.Offset(1, -ncol).Select
+Next i
+
+Sheets("Sheet1").Select: Range("E2").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = e(i, j)
+        ActiveCell.Offset(0, 1).Select
+    Next j
+    ActiveCell.Offset(1, -ncol).Select
+Next i
+
+Sheets("Sheet1").Select: Range("A6").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = d(j, i)
+        ActiveCell.Offset(1, 0).Select
+    Next j
+    ActiveCell.Offset(-ncol, 1).Select
+Next i
+
+Sheets("Sheet1").Select: Range("E6").Select
+For i = 1 To nrow
+    For j = 1 To ncol
+        ActiveCell.value = f(j, i)
+        ActiveCell.Offset(1, 0).Select
+    Next j
+    ActiveCell.Offset(-ncol, 1).Select
+Next i
+ End Sub
