@@ -99,4 +99,12 @@ For i = 1 To nrow
    
 Next i
 
+Dim k As Variant, l As Variant, m As Variant
+k = Range("c12,f15")
+ReDim l(4, 4)
+
+l = Application.MInverse(k)
+
+m = Application.MMult(l)
+
  End Sub
