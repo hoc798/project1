@@ -73,4 +73,30 @@ For i = 1 To nrow
     Next j
     ActiveCell.Offset(-ncol, 1).Select
 Next i
+
+Dim a(ncol, 1) As Integer, b(ncol, 1) As Integer
+For j = 1 To ncol
+a(j, 1) = 6 * Rnd() + 1
+Next j
+
+Sheets("Sheet1").Select: Range("N2").Select
+For j = 1 To ncol
+        ActiveCell.value = a(j, 1)
+        ActiveCell.Offset(1, 0).Select
+Next j
+            For j = 1 To ncol
+                For i = 1 To nrow
+                b(i, 1) = b(i, 1) + c(i, j) * a(j, 1)
+                Next i
+            Next j
+       
+
+Sheets("Sheet1").Select: Range("N6").Select
+For i = 1 To nrow
+        ActiveCell.value = b(i, 1)
+        ActiveCell.Offset(1, 0).Select
+  
+   
+Next i
+
  End Sub
